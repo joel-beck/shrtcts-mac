@@ -1,10 +1,10 @@
-# The following table enumerates all of the commands currently supported by RStudio.
-# These command IDs can be used in RStudio API calls such as rstudioapi::executeCommand
+# All commands currently supported by RStudio. The command IDs can be used in RStudio
+# API calls such as rstudioapi::executeCommand().
 # https://docs.rstudio.com/ide/server-pro/rstudio_ide_commands/rstudio_ide_commands.html
 
 
 #   ____________________________________________________________________________
-#   Editor Utils                                                            ####
+#   Addins                                                                  ####
 
 #' Format on Save
 #'
@@ -28,6 +28,30 @@ function() {
 }
 
 
+#' Show Project TODOs
+#'
+#' @description Show Project TODOs
+#' @interactive
+#' @shortcut Ctrl+T
+todor::todor_project_addin
+
+
+
+#   ____________________________________________________________________________
+#   Editor Utils                                                            ####
+
+#' Run Code without moving Cursor
+#'
+#' @description Run Code as with Ctrl+Enter but without moving Cursor
+#' @interactive
+#' @shortcut Alt+Enter
+function() {
+  rstudioapi::executeCommand("executeCodeWithoutMovingCursor") |>
+    capture.output() |>
+    invisible()
+}
+
+
 #' Delete File
 #'
 #' @description
@@ -38,32 +62,6 @@ function() {
   rstudioapi::documentClose(save = FALSE) |>
     capture.output() |>
     invisible()
-}
-
-
-# NOTE: Currently not in Use
-
-#' Cut Current Line
-#'
-#' @description Cut Current Line without Selection
-#' @interactive
-# @shortcut Cmd+X
-function() {
-  source("~/Library/Application Support/shrtcts/.shrtcts_helpers.R")
-  line_action_without_selection(action_name = "cutDummy")
-}
-
-
-# NOTE: Currently not in Use
-
-#' Copy Current Line
-#'
-#' @description Copy Current Line without Selection
-#' @interactive
-# @shortcut Cmd+C
-function() {
-  source("~/Library/Application Support/shrtcts/.shrtcts_helpers.R")
-  line_action_without_selection(action_name = "copyDummy")
 }
 
 
@@ -78,21 +76,9 @@ function() {
 #' @shortcut Cmd+Shift+N
 function() {
   rstudioapi::documentNew(text = "", type = "rmarkdown")
-  # snippet with name 'rmd'
+  # requires snippet with name 'rmd'
   rstudioapi::insertText("rmd")
   rstudioapi::executeCommand("insertSnippet") |>
-    capture.output() |>
-    invisible()
-}
-
-
-#' Run Current Line without moving Cursor
-#'
-#' @description Run Code as with Ctrl+Enter but without moving Cursor
-#' @interactive
-#' @shortcut Alt+Enter
-function() {
-  rstudioapi::executeCommand("executeCodeWithoutMovingCursor") |>
     capture.output() |>
     invisible()
 }
@@ -115,7 +101,6 @@ function() {
 #   ____________________________________________________________________________
 #   Text Highlighting                                                       ####
 
-
 #' Italic
 #'
 #' @description
@@ -124,7 +109,7 @@ function() {
 #' @interactive
 #' @shortcut Cmd+I
 function() {
-  source("~/Library/Application Support/shrtcts/.shrtcts_helpers.R")
+  source(here::here(".shrtcts_helpers.R"))
   highlight_text(snippet_text = "it", prefix = "*")
 }
 
@@ -137,7 +122,7 @@ function() {
 #' @interactive
 #' @shortcut Cmd+B
 function() {
-  source("~/Library/Application Support/shrtcts/.shrtcts_helpers.R")
+  source(here::here(".shrtcts_helpers.R"))
   highlight_text(snippet_text = "bo", prefix = "**")
 }
 
@@ -150,7 +135,7 @@ function() {
 #' @interactive
 #' @shortcut Cmd+E
 function() {
-  source("~/Library/Application Support/shrtcts/.shrtcts_helpers.R")
+  source(here::here(".shrtcts_helpers.R"))
   highlight_text(snippet_text = "in", prefix = "`")
 }
 
@@ -163,7 +148,7 @@ function() {
 #' @interactive
 #' @shortcut Cmd+L
 function() {
-  source("~/Library/Application Support/shrtcts/.shrtcts_helpers.R")
+  source(here::here(".shrtcts_helpers.R"))
   highlight_text(snippet_text = "la", prefix = "$")
 }
 
@@ -176,7 +161,7 @@ function() {
 #' @interactive
 #' @shortcut Cmd+Shift+I
 function() {
-  source("~/Library/Application Support/shrtcts/.shrtcts_helpers.R")
+  source(here::here(".shrtcts_helpers.R"))
   highlight_text(snippet_text = "inl", prefix = "`r ", suffix = "`")
 }
 
@@ -184,7 +169,6 @@ function() {
 
 #   ____________________________________________________________________________
 #   Insert Text                                                             ####
-
 
 #' Insert %*% Operator
 #'
@@ -194,4 +178,31 @@ function() {
   rstudioapi::insertText(" %*% ") |>
     capture.output() |>
     invisible()
+}
+
+
+
+
+#   ____________________________________________________________________________
+#   Currently unused                                                        ####
+
+#' Cut Current Line
+#'
+#' @description Cut Current Line without Selection
+#' @interactive
+# @shortcut Cmd+X
+function() {
+  source(here::here(".shrtcts_helpers.R"))
+  line_action_without_selection(action_name = "cutDummy")
+}
+
+
+#' Copy Current Line
+#'
+#' @description Copy Current Line without Selection
+#' @interactive
+# @shortcut Cmd+C
+function() {
+  source(here::here(".shrtcts_helpers.R"))
+  line_action_without_selection(action_name = "copyDummy")
 }
