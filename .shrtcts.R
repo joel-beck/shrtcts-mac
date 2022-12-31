@@ -4,7 +4,7 @@
 
 
 #   ____________________________________________________________________________
-#   Addins                                                                  ####
+#   Editor Utils                                                            ####
 
 #' Format on Save
 #'
@@ -27,18 +27,6 @@ function() {
     invisible()
 }
 
-
-#' Show Project TODOs
-#'
-#' @description Show Project TODOs
-#' @interactive
-#' @shortcut Ctrl+T
-todor::todor_project_addin
-
-
-
-#   ____________________________________________________________________________
-#   Editor Utils                                                            ####
 
 #' Run Code without moving Cursor
 #'
