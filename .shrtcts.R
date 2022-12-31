@@ -11,7 +11,7 @@
 #' @description
 #'   Format Document with styler Package and Save Document.
 #' @interactive
-# @shortcut Cmd+S
+#' @shortcut Cmd+S
 function() {
   # format only .R and .Rmd files, but save all file types
   file_type <- tools::file_ext(rstudioapi::getActiveDocumentContext()$path)
@@ -47,7 +47,7 @@ function() {
 #'
 #' @description Cut Current Line without Selection
 #' @interactive
-#' @shortcut Cmd+X
+# @shortcut Cmd+X
 function() {
   source("~/Library/Application Support/shrtcts/.shrtcts_helpers.R")
   line_action_without_selection(action_name = "cutDummy")
@@ -60,7 +60,7 @@ function() {
 #'
 #' @description Copy Current Line without Selection
 #' @interactive
-#' @shortcut Cmd+C
+# @shortcut Cmd+C
 function() {
   source("~/Library/Application Support/shrtcts/.shrtcts_helpers.R")
   line_action_without_selection(action_name = "copyDummy")
