@@ -8,8 +8,7 @@
 
 #' Format on Save
 #'
-#' @description
-#'   Format Document with styler Package and Save Document.
+#' @description Format Document with styler Package and Save Document.
 #' @interactive
 #' @shortcut Cmd+S
 function() {
@@ -42,10 +41,9 @@ function() {
 
 #' Delete File
 #'
-#' @description
-#'   Close Current Document without Saving
+#' @description Close Current Document without Saving
 #' @interactive
-# @shortcut Shift+Delete
+#' @shortcut Shift+Delete
 function() {
   rstudioapi::documentClose(save = FALSE) |>
     capture.output() |>
@@ -55,20 +53,67 @@ function() {
 
 
 #   ____________________________________________________________________________
+#   Script Sections                                                         ####
+
+#' Section Level 1
+#'
+#' @description Insert Multi-Line Level 1 Section
+#' @interactive
+#' @shortcut Ctrl+1
+function() {
+  source(here::here(".shrtcts_helpers.R"))
+  insert_section_multi_line(delimiter = "*")
+}
+
+
+#' Section Level 2
+#'
+#' @description Insert Multi-Line Level 2 Section
+#' @interactive
+#' @shortcut Ctrl+2
+function() {
+  source(here::here(".shrtcts_helpers.R"))
+  insert_section_multi_line(delimiter = "_")
+}
+
+
+#' Section Level 3
+#'
+#' @description Insert Multi-Line Level 3 Section
+#' @interactive
+#' @shortcut Ctrl+3
+function() {
+  source(here::here(".shrtcts_helpers.R"))
+  insert_section_multi_line(delimiter = ".")
+}
+
+
+#' Section Level 4
+#'
+#' @description Insert Single-Line Level 4 Section
+#' @interactive
+#' @shortcut Ctrl+4
+function() {
+  source(here::here(".shrtcts_helpers.R"))
+  insert_section_single_line(delimiter = "-")
+}
+
+
+#   ____________________________________________________________________________
 #   R Markdown                                                              ####
 
-#' New R Markdown
+#' New R Markdown Document
 #'
 #' @description Open New empty R Markdown Document and Insert Template
 #' @interactive
 #' @shortcut Cmd+Shift+N
 function() {
+  source(here::here(".shrtcts_helpers.R"))
+
   rstudioapi::documentNew(text = "", type = "rmarkdown")
+
   # requires snippet with name 'rmd'
-  rstudioapi::insertText("rmd")
-  rstudioapi::executeCommand("insertSnippet") |>
-    capture.output() |>
-    invisible()
+  insert_snippet(snippet_text = "rmd")
 }
 
 
@@ -163,9 +208,8 @@ function() {
 #' @description Insert %*% Operator at current Cursor Location
 #' @interactive
 function() {
-  rstudioapi::insertText(" %*% ") |>
-    capture.output() |>
-    invisible()
+  source(here::here(".shrtcts_helpers.R"))
+  insert_text(" %*% ")
 }
 
 
