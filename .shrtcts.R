@@ -62,7 +62,7 @@ function() {
 #' @shortcut Ctrl+1
 function() {
   source(here::here(".shrtcts_helpers.R"))
-  insert_section_multi_line(delimiter = "*")
+  insert_section_multi_line(delimiter = "_")
 }
 
 
@@ -73,7 +73,7 @@ function() {
 #' @shortcut Ctrl+2
 function() {
   source(here::here(".shrtcts_helpers.R"))
-  insert_section_multi_line(delimiter = "_")
+  insert_section_multi_line(delimiter = ".")
 }
 
 
@@ -84,7 +84,7 @@ function() {
 #' @shortcut Ctrl+3
 function() {
   source(here::here(".shrtcts_helpers.R"))
-  insert_section_multi_line(delimiter = ".")
+  insert_section_multi_line(delimiter = ". ")
 }
 
 

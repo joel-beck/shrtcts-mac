@@ -17,8 +17,11 @@ get_selected_range <- function(document_context) {
 #   ____________________________________________________________________________
 #   Generate Text                                                           ####
 
-surround_selection <- function(selected_text, prefix, suffix) {
-  paste0(prefix, selected_text, suffix)
+generate_suffix <- function(delimiter, num_repetitions) {
+  rep(delimiter, num_repetitions) |>
+    paste0(collapse = "") |>
+    # if delimiter contains multiple characters
+    stringr::str_trunc(width = num_repetitions, ellipsis = "")
 }
 
 generate_section_single_line <- function(text, delimiter, line_width) {
@@ -30,7 +33,7 @@ generate_section_single_line <- function(text, delimiter, line_width) {
   length_whitespace <- nchar(whitespace_after_text)
   length_suffix <- line_width - length_prefix - length_text - length_whitespace
 
-  suffix <- rep(delimiter, times = length_suffix) |> paste0(collapse = "")
+  suffix <- generate_suffix(delimiter, num_repetitions = length_suffix)
   text_line <- paste0(prefix, text, whitespace_after_text, suffix)
 
   paste0(text_line, "\n")
@@ -49,17 +52,19 @@ generate_section_multi_line <- function(text, delimiter, line_width) {
   length_suffix <-
     line_width - length_prefix - length_text - length_whitespace - length_line_end
 
-  suffix <- rep(" ", times = length_suffix) |> paste0(collapse = "")
+  suffix <- generate_suffix(delimiter = " ", num_repetitions = length_suffix)
 
   line_above <- paste0(
-    prefix,
-    rep(delimiter, times = line_width - length_prefix) |> paste0(collapse = "")
+    prefix, generate_suffix(delimiter, num_repetitions = line_width - length_prefix)
   )
   text_line <- paste0(prefix, text, whitespace_after_text, suffix, line_end)
 
   paste0(line_above, "\n", text_line, "\n")
 }
 
+surround_selection <- function(selected_text, prefix, suffix) {
+  paste0(prefix, selected_text, suffix)
+}
 
 #   ____________________________________________________________________________
 #   Insert Text                                                             ####
