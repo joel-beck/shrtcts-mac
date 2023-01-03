@@ -51,6 +51,13 @@ function() {
 }
 
 
+#' Restart RStudio
+#'
+#' @description Restart RStudio
+#' @interactive
+#' @shortcut Shift+Cmd+R
+usethis:::restart_rstudio
+
 
 #   ____________________________________________________________________________
 #   Script Sections                                                         ####
@@ -61,7 +68,7 @@ function() {
 #' @interactive
 #' @shortcut Ctrl+1
 function() {
-  source(here::here(".shrtcts_helpers.R"))
+  source("/Users/joel/Library/Application Support/shrtcts/.shrtcts_helpers.R")
   insert_section_multi_line(delimiter = "_")
 }
 
@@ -72,7 +79,7 @@ function() {
 #' @interactive
 #' @shortcut Ctrl+2
 function() {
-  source(here::here(".shrtcts_helpers.R"))
+  source("/Users/joel/Library/Application Support/shrtcts/.shrtcts_helpers.R")
   insert_section_multi_line(delimiter = ".")
 }
 
@@ -83,7 +90,7 @@ function() {
 #' @interactive
 #' @shortcut Ctrl+3
 function() {
-  source(here::here(".shrtcts_helpers.R"))
+  source("/Users/joel/Library/Application Support/shrtcts/.shrtcts_helpers.R")
   insert_section_multi_line(delimiter = ". ")
 }
 
@@ -94,7 +101,7 @@ function() {
 #' @interactive
 #' @shortcut Ctrl+4
 function() {
-  source(here::here(".shrtcts_helpers.R"))
+  source("/Users/joel/Library/Application Support/shrtcts/.shrtcts_helpers.R")
   insert_section_single_line(delimiter = "-")
 }
 
@@ -108,7 +115,7 @@ function() {
 #' @interactive
 #' @shortcut Cmd+Shift+N
 function() {
-  source(here::here(".shrtcts_helpers.R"))
+  source("/Users/joel/Library/Application Support/shrtcts/.shrtcts_helpers.R")
 
   rstudioapi::documentNew(text = "", type = "rmarkdown")
 
@@ -142,7 +149,7 @@ function() {
 #' @interactive
 #' @shortcut Cmd+I
 function() {
-  source(here::here(".shrtcts_helpers.R"))
+  source("/Users/joel/Library/Application Support/shrtcts/.shrtcts_helpers.R")
   highlight_text(snippet_text = "it", prefix = "*")
 }
 
@@ -155,7 +162,7 @@ function() {
 #' @interactive
 #' @shortcut Cmd+B
 function() {
-  source(here::here(".shrtcts_helpers.R"))
+  source("/Users/joel/Library/Application Support/shrtcts/.shrtcts_helpers.R")
   highlight_text(snippet_text = "bo", prefix = "**")
 }
 
@@ -168,7 +175,7 @@ function() {
 #' @interactive
 #' @shortcut Cmd+E
 function() {
-  source(here::here(".shrtcts_helpers.R"))
+  source("/Users/joel/Library/Application Support/shrtcts/.shrtcts_helpers.R")
   highlight_text(snippet_text = "in", prefix = "`")
 }
 
@@ -181,7 +188,7 @@ function() {
 #' @interactive
 #' @shortcut Cmd+L
 function() {
-  source(here::here(".shrtcts_helpers.R"))
+  source("/Users/joel/Library/Application Support/shrtcts/.shrtcts_helpers.R")
   highlight_text(snippet_text = "la", prefix = "$")
 }
 
@@ -194,7 +201,7 @@ function() {
 #' @interactive
 #' @shortcut Cmd+Shift+I
 function() {
-  source(here::here(".shrtcts_helpers.R"))
+  source("/Users/joel/Library/Application Support/shrtcts/.shrtcts_helpers.R")
   highlight_text(snippet_text = "inl", prefix = "`r ", suffix = "`")
 }
 
@@ -208,7 +215,7 @@ function() {
 #' @description Insert %*% Operator at current Cursor Location
 #' @interactive
 function() {
-  source(here::here(".shrtcts_helpers.R"))
+  source("/Users/joel/Library/Application Support/shrtcts/.shrtcts_helpers.R")
   insert_text(" %*% ")
 }
 
@@ -224,7 +231,7 @@ function() {
 #' @interactive
 # @shortcut Cmd+X
 function() {
-  source(here::here(".shrtcts_helpers.R"))
+  source("/Users/joel/Library/Application Support/shrtcts/.shrtcts_helpers.R")
   line_action_without_selection(action_name = "cutDummy")
 }
 
@@ -235,6 +242,6 @@ function() {
 #' @interactive
 # @shortcut Cmd+C
 function() {
-  source(here::here(".shrtcts_helpers.R"))
+  source("/Users/joel/Library/Application Support/shrtcts/.shrtcts_helpers.R")
   line_action_without_selection(action_name = "copyDummy")
 }
