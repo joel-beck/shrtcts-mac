@@ -119,8 +119,11 @@ function() {
 
   rstudioapi::documentNew(text = "", type = "rmarkdown")
 
+  # wait until empty file is created
+  Sys.sleep(0.5)
+
   # requires snippet with name 'rmd'
-  insert_snippet(snippet_text = "rmd")
+  insert_snippet("rmd")
 }
 
 
