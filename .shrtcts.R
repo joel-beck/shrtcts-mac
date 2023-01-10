@@ -13,9 +13,9 @@
 #' @shortcut Cmd+S
 function() {
   # format only .R and .Rmd files, but save all file types
-  file_type <- tools::file_ext(rstudioapi::getActiveDocumentContext()$path)
+  file_extension <- tools::file_ext(rstudioapi::getActiveDocumentContext()$path)
 
-  if (file_type %in% c("R", "Rmd", "qmd")) {
+  if (file_extension %in% c("R", "Rmd", "qmd")) {
     styler:::style_active_file() |>
       capture.output() |>
       invisible()
